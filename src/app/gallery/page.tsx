@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import Image from 'next/image'
 import { Filter, Heart, Share2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
@@ -80,9 +81,11 @@ export default function GalleryPage() {
                 className="relative group cursor-pointer overflow-hidden rounded-lg aspect-square"
                 onClick={() => setSelectedImage(image)}
               >
-                <img
+                <Image
                   src={image.src}
                   alt={image.title}
+                  width={800}
+                  height={800}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-luxury-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -106,9 +109,11 @@ export default function GalleryPage() {
           onClick={() => setSelectedImage(null)}
         >
           <div className="relative max-w-5xl w-full">
-            <img
+            <Image
               src={selectedImage.src}
               alt={selectedImage.title}
+              width={1200}
+              height={800}
               className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
             />
             <div className="absolute top-4 right-4 flex gap-2">

@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Calendar, Clock, ArrowRight, Coffee } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -129,9 +130,11 @@ export default function BlogPage() {
               >
                 <Card className="overflow-hidden border-gold-500/20 bg-luxury-charcoal hover:border-gold-500/50 transition-all duration-300 hover:shadow-gold group">
                   <div className="relative h-48 overflow-hidden">
-                    <img
+                    <Image
                       src={post.image}
                       alt={post.title}
+                      width={600}
+                      height={400}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute top-4 left-4 bg-gold-500 text-luxury-black px-3 py-1 rounded-full text-xs font-semibold">

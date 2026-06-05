@@ -36,16 +36,35 @@ export default function ReservationsPage() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000))
+    // Show success notification
+    toast({
+      title: 'Reservation Submitted',
+      description: 'Redirecting to WhatsApp to complete your reservation...',
+    })
+
+    // Simulate short delay for notification to show
+    await new Promise(resolve => setTimeout(resolve, 1000))
+
+    // Generate WhatsApp message
+    const whatsappNumber = '212721953795'
+    const message = `☕ New Reservation - LUX Coffee
+
+👤 Name: ${formData.name}
+📞 Phone: ${formData.phone}
+📅 Date: ${formData.date}
+⏰ Time: ${formData.time}
+👥 Guests: ${formData.guests}
+📝 Notes: ${formData.specialRequests || 'None'}`
+
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message)
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
+
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank')
 
     setIsSubmitting(false)
     setIsSubmitted(true)
-
-    toast({
-      title: 'Reservation Submitted',
-      description: 'Your reservation request has been received. We will confirm your booking shortly.',
-    })
   }
 
   const handleInputChange = (field: string, value: string) => {
@@ -65,9 +84,9 @@ export default function ReservationsPage() {
               <div className="w-20 h-20 bg-gold-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle className="h-10 w-10 text-gold-500" />
               </div>
-              <h2 className="text-3xl font-bold text-gradient mb-4">Reservation Confirmed</h2>
+              <h2 className="text-3xl font-bold text-gradient mb-4">Reservation Submitted</h2>
               <p className="text-gray-400 mb-6">
-                Thank you for your reservation request. We have received your booking and will send a confirmation email shortly.
+                Thank you for your reservation request. We have opened WhatsApp with your reservation details. Please send the message to complete your booking.
               </p>
               <div className="bg-luxury-dark rounded-lg p-4 mb-6 text-left">
                 <div className="flex items-center space-x-3 mb-3">
@@ -155,7 +174,7 @@ export default function ReservationsPage() {
                       <Input
                         id="phone"
                         type="tel"
-                        placeholder="+1 (555) 123-4567"
+                        placeholder="+212 0721-953795"
                         className="bg-luxury-dark border-gold-500/30 text-gold-100 placeholder:text-gray-500"
                         value={formData.phone}
                         onChange={(e) => handleInputChange('phone', e.target.value)}
@@ -259,7 +278,7 @@ export default function ReservationsPage() {
                     </div>
                     <div className="flex items-center space-x-3">
                       <Phone className="h-5 w-5 text-gold-500" />
-                      <span className="text-gray-300">+1 (555) 123-4567</span>
+                      <span className="text-gray-300">+212 0721-953795</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <Mail className="h-5 w-5 text-gold-500" />

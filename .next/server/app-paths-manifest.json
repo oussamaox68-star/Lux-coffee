@@ -1,21 +1,4 @@
 {
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/api/contact/route": "app/api/contact/route.js",
-  "/api/products/route": "app/api/products/route.js",
-  "/_not-found/page": "app/_not-found/page.js",
-  "/api/reservations/route": "app/api/reservations/route.js",
-  "/sitemap.xml/route": "app/sitemap.xml/route.js",
-  "/about/page": "app/about/page.js",
-  "/admin/dashboard/page": "app/admin/dashboard/page.js",
-  "/auth/signin/page": "app/auth/signin/page.js",
-  "/blog/page": "app/blog/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/faq/page": "app/faq/page.js",
-  "/gallery/page": "app/gallery/page.js",
-  "/menu/page": "app/menu/page.js",
-  "/page": "app/page.js",
-  "/privacy/page": "app/privacy/page.js",
-  "/reservations/page": "app/reservations/page.js",
   "/products/[slug]/page": "app/products/[slug]/page.js",
-  "/terms/page": "app/terms/page.js"
+  "/page": "app/page.js"
 }

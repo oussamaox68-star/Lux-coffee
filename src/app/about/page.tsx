@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Award, Coffee, Heart, Target, Users, Globe, Leaf } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -88,9 +89,11 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="relative"
             >
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800"
                 alt="Coffee preparation"
+                width={800}
+                height={600}
                 className="rounded-lg shadow-gold"
               />
               <div className="absolute -bottom-6 -left-6 bg-gold-500 text-luxury-black p-6 rounded-lg shadow-lg">
@@ -193,9 +196,11 @@ export default function AboutPage() {
                 transition={{ delay: index * 0.1 }}
               >
                 <Card className="overflow-hidden border-gold-500/20 bg-luxury-dark hover:border-gold-500/50 transition-all duration-300">
-                  <img
+                  <Image
                     src={member.image}
                     alt={member.name}
+                    width={400}
+                    height={256}
                     className="w-full h-64 object-cover"
                   />
                   <CardContent className="p-6 text-center">

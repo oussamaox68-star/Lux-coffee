@@ -133,7 +133,7 @@ export default function TermsPage() {
               <CardContent className="p-6">
                 <h2 className="text-2xl font-bold text-gradient mb-4">Contact Us</h2>
                 <p className="text-gray-300">
-                  For questions about these Terms of Service, please contact us at legal@luxcoffee.com or call us at +1 (555) 123-4567.
+                  For questions about these Terms of Service, please contact us at legal@luxcoffee.com or call us at +212 0721-953795.
                 </p>
               </CardContent>
             </Card>

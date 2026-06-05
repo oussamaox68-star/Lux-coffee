@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, Star, Coffee, Award, Clock, MapPin, Phone, Mail, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -121,9 +122,11 @@ export default function HomePage() {
               >
                 <Card className="overflow-hidden border-gold-500/20 bg-luxury-dark hover:border-gold-500/50 transition-all duration-300 hover:shadow-gold">
                   <div className="relative h-64 overflow-hidden">
-                    <img
+                    <Image
                       src={product.image}
                       alt={product.name}
+                      width={600}
+                      height={400}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute top-4 right-4 bg-gold-500 text-luxury-black px-3 py-1 rounded-full text-sm font-semibold">
@@ -227,8 +230,10 @@ export default function HomePage() {
                 variants={fadeInUp}
                 className="group relative overflow-hidden rounded-lg aspect-square cursor-pointer"
               >
-                <img
+                <Image
                   src={category.image}
+                  width={300}
+                  height={300}
                   alt={category.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -336,7 +341,7 @@ export default function HomePage() {
 
       {/* WhatsApp Floating Button */}
       <a
-        href="https://wa.me/15551234567"
+        href="https://wa.me/212721953795"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors"

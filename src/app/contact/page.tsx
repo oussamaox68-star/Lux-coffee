@@ -88,7 +88,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h4 className="font-semibold text-gold-400 mb-1">Phone</h4>
-                        <p className="text-gray-400">+1 (555) 123-4567</p>
+                        <p className="text-gray-400">+212 0721-953795</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-4">
@@ -171,7 +171,7 @@ export default function ContactPage() {
                       <Input
                         id="phone"
                         type="tel"
-                        placeholder="+1 (555) 123-4567"
+                        placeholder="+212 0721-953795"
                         className="bg-luxury-dark border-gold-500/30 text-gold-100 placeholder:text-gray-500"
                         value={formData.phone}
                         onChange={(e) => handleInputChange('phone', e.target.value)}

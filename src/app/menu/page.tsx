@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Search, SlidersHorizontal, Star, Coffee } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -214,9 +215,11 @@ export default function MenuPage() {
               >
                 <Card className="overflow-hidden border-gold-500/20 bg-luxury-charcoal hover:border-gold-500/50 transition-all duration-300 hover:shadow-gold group">
                   <div className="relative h-48 overflow-hidden">
-                    <img
+                    <Image
                       src={product.image}
                       alt={product.name}
+                      width={600}
+                      height={400}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     {product.featured && (

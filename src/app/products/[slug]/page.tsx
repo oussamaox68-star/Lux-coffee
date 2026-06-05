@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import { Star, ShoppingCart, Heart, Share2, Coffee, Award, Clock, Leaf, Truck } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -90,9 +91,11 @@ export default function ProductDetailPage() {
               animate={{ opacity: 1, x: 0 }}
             >
               <div className="relative mb-4 overflow-hidden rounded-lg border border-gold-500/20">
-                <img
+                <Image
                   src={product.images[selectedImage]}
                   alt={product.name}
+                  width={800}
+                  height={600}
                   className="w-full h-96 object-cover"
                 />
                 {product.originalPrice && (
@@ -110,9 +113,11 @@ export default function ProductDetailPage() {
                       selectedImage === index ? 'border-gold-500' : 'border-gold-500/20 hover:border-gold-500/50'
                     }`}
                   >
-                    <img
+                    <Image
                       src={image}
                       alt={`${product.name} ${index + 1}`}
+                      width={200}
+                      height={200}
                       className="w-full h-full object-cover"
                     />
                   </button>
@@ -239,9 +244,11 @@ export default function ProductDetailPage() {
             {relatedProducts.map((relatedProduct) => (
               <Card key={relatedProduct.slug} className="overflow-hidden border-gold-500/20 bg-luxury-dark hover:border-gold-500/50 transition-all duration-300">
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  <Image
                     src={relatedProduct.image}
                     alt={relatedProduct.name}
+                    width={400}
+                    height={300}
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                   />
                 </div>
