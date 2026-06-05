@@ -9,121 +9,13 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { motion } from 'framer-motion'
 
-const products = [
-  {
-    id: 1,
-    name: 'Ethiopian Yirgacheffe',
-    slug: 'ethiopian-yirgacheffe',
-    description: 'Bright and fruity with floral notes and a wine-like acidity',
-    price: 18.99,
-    originalPrice: 22.99,
-    image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400',
-    category: 'Single Origin',
-    rating: 4.9,
-    reviews: 128,
-    featured: true,
-    popular: true,
-    inStock: true,
-  },
-  {
-    id: 2,
-    name: 'Colombian Supremo',
-    slug: 'colombian-supremo',
-    description: 'Rich and balanced with caramel sweetness and nutty undertones',
-    price: 16.99,
-    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400',
-    category: 'Single Origin',
-    rating: 4.8,
-    reviews: 95,
-    featured: true,
-    popular: true,
-    inStock: true,
-  },
-  {
-    id: 3,
-    name: 'Jamaican Blue Mountain',
-    slug: 'jamaican-blue-mountain',
-    description: 'Exceptionally smooth with mild flavor and no bitterness',
-    price: 45.99,
-    image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400',
-    category: 'Single Origin',
-    rating: 5.0,
-    reviews: 67,
-    featured: true,
-    popular: false,
-    inStock: true,
-  },
-  {
-    id: 4,
-    name: 'House Blend',
-    slug: 'house-blend',
-    description: 'Our signature blend combining the best of multiple origins',
-    price: 14.99,
-    image: 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400',
-    category: 'Blends',
-    rating: 4.7,
-    reviews: 203,
-    featured: false,
-    popular: true,
-    inStock: true,
-  },
-  {
-    id: 5,
-    name: 'Espresso Roast',
-    slug: 'espresso-roast',
-    description: 'Dark and bold with rich crema and chocolate notes',
-    price: 15.99,
-    image: 'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400',
-    category: 'Dark Roast',
-    rating: 4.8,
-    reviews: 156,
-    featured: false,
-    popular: true,
-    inStock: true,
-  },
-  {
-    id: 6,
-    name: 'Decaf Blend',
-    slug: 'decaf-blend',
-    description: 'Smooth decaffeinated coffee without compromising flavor',
-    price: 13.99,
-    image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400',
-    category: 'Decaf',
-    rating: 4.5,
-    reviews: 89,
-    featured: false,
-    popular: false,
-    inStock: true,
-  },
-  {
-    id: 7,
-    name: 'Cold Brew Blend',
-    slug: 'cold-brew-blend',
-    description: 'Specially crafted for cold brewing with smooth finish',
-    price: 17.99,
-    image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400',
-    category: 'Cold Brew',
-    rating: 4.9,
-    reviews: 112,
-    featured: true,
-    popular: true,
-    inStock: true,
-  },
-  {
-    id: 8,
-    name: 'Light Roast',
-    slug: 'light-roast',
-    description: 'Bright and acidic with complex fruit flavors',
-    price: 15.99,
-    image: 'https://images.unsplash.com/photo-1559496417-e7f25cb247f3?w=400',
-    category: 'Light Roast',
-    rating: 4.6,
-    reviews: 78,
-    featured: false,
-    popular: false,
-    inStock: true,
-  },
-]
+import { products } from '@/lib/products'
+
+const productsList = Object.entries(products).map(([slug, product]: [string, any]) => ({
+  id: slug,
+  slug: slug,
+  ...product,
+}))
 
 const categories = ['All', 'Single Origin', 'Blends', 'Light Roast', 'Medium Roast', 'Dark Roast', 'Cold Brew', 'Decaf']
 
@@ -132,7 +24,7 @@ export default function MenuPage() {
   const [selectedCategory, setSelectedCategory] = React.useState('All')
   const [showFilters, setShowFilters] = React.useState(false)
 
-  const filteredProducts = products.filter(product => {
+  const filteredProducts = productsList.filter((product: any) => {
     const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          product.description.toLowerCase().includes(searchQuery.toLowerCase())
     const matchesCategory = selectedCategory === 'All' || product.category === selectedCategory

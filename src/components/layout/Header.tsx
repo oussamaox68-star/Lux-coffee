@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { Menu, X, Coffee, ShoppingCart, User, Search, Moon, Sun } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useCart } from '@/contexts/CartContext'
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -22,6 +23,8 @@ export function Header() {
   const [scrolled, setScrolled] = React.useState(false)
   const [darkMode, setDarkMode] = React.useState(true)
   const pathname = usePathname()
+  const { getTotalItems } = useCart()
+  const cartItemsCount = getTotalItems()
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -69,8 +72,15 @@ export function Header() {
             <Button variant="ghost" size="icon">
               <Search className="h-5 w-5 text-gold-400" />
             </Button>
-            <Button variant="ghost" size="icon">
-              <ShoppingCart className="h-5 w-5 text-gold-400" />
+            <Button variant="ghost" size="icon" className="relative" asChild>
+              <Link href="/cart">
+                <ShoppingCart className="h-5 w-5 text-gold-400" />
+                {cartItemsCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-gold-500 text-luxury-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                    {cartItemsCount}
+                  </span>
+                )}
+              </Link>
             </Button>
             <Button variant="ghost" size="icon">
               <User className="h-5 w-5 text-gold-400" />
@@ -129,6 +139,12 @@ export function Header() {
                 </Link>
               ))}
               <div className="pt-4 space-y-2">
+                <Button variant="luxury" className="w-full" asChild>
+                  <Link href="/cart" className="flex items-center justify-center space-x-2">
+                    <ShoppingCart className="h-4 w-4" />
+                    <span>Cart ({cartItemsCount})</span>
+                  </Link>
+                </Button>
                 <Button variant="luxury" className="w-full" asChild>
                   <Link href="/reservations">Reserve Table</Link>
                 </Button>
