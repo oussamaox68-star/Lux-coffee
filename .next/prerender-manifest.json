@@ -1,1 +1,11 @@
-{"version":4,"routes":{"/products/ethiopian-yirgacheffe":{},"/products/colombian-supremo":{},"/products/house-blend":{},"/products/guatemalan-antigua":{},"/products/sumatra-mandheling":{},"/products/jamaican-blue-mountain":{},"/products/espresso-roast":{},"/products/decaf-blend":{},"/products/cold-brew-blend":{},"/products/light-roast":{}},"dynamicRoutes":{"/products/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/products/[slug]","routeRegex":"^\\/products\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"44c61514ff612bd4fcda51048544b35a","previewModeSigningKey":"b1d2205895c38811d3224588871475e3188513ed521da8de70c12134e6985637","previewModeEncryptionKey":"24396c9d25a92b70fdf2be1f85f4d2514eacb2d49ac491d8a75f5d9a2cabc70d"}}
+{
+  "version": 4,
+  "routes": {},
+  "dynamicRoutes": {},
+  "notFoundRoutes": [],
+  "preview": {
+    "previewModeId": "a651ffbe91795d484bf6d0976409868f",
+    "previewModeSigningKey": "780f95c342e0e10733ae078be3dc3361c859170736aca451fd85b13599da19a5",
+    "previewModeEncryptionKey": "3de31b893c80ff139c4b9044d2ef8e47a740eb7b956097462489aaa6edc29d5b"
+  }
+}

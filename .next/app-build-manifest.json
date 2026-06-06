@@ -21,25 +21,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/products/page.js"
     ],
-    "/products/[slug]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/products/[slug]/page.js"
-    ],
     "/cart/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/cart/page.js"
     ],
-    "/menu/page": [
+    "/checkout/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/menu/page.js"
-    ],
-    "/about/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/about/page.js"
+      "static/chunks/app/checkout/page.js"
     ]
   }
 }
