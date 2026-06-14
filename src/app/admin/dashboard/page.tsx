@@ -1,9 +1,12 @@
 'use client'
 
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { LayoutDashboard, Package, Calendar, Users, MessageSquare, Settings, LogOut, TrendingUp, DollarSign, ShoppingCart, Coffee } from 'lucide-react'
+import { LayoutDashboard, Package, Calendar, LogOut, DollarSign, ShoppingCart, Coffee } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { useAdminAuth } from '@/contexts/AdminAuthContext'
 
 const stats = [
   { title: 'Total Revenue', value: '$45,231', change: '+20.1%', icon: DollarSign },
@@ -13,10 +16,10 @@ const stats = [
 ]
 
 const recentOrders = [
-  { id: 1, customer: 'John Doe', items: 'Ethiopian Yirgacheffe x2', total: '$37.98', status: 'Completed' },
-  { id: 2, customer: 'Jane Smith', items: 'House Blend x1', total: '$14.99', status: 'Pending' },
-  { id: 3, customer: 'Bob Johnson', items: 'Colombian Supremo x3', total: '$50.97', status: 'Processing' },
-  { id: 4, customer: 'Alice Brown', items: 'Jamaican Blue Mountain x1', total: '$45.99', status: 'Completed' },
+  { id: 1, customer: 'John Doe', items: 'Premium Coffee x2', total: '$37.98', status: 'Completed' },
+  { id: 2, customer: 'Jane Smith', items: 'Signature Blend x1', total: '$14.99', status: 'Pending' },
+  { id: 3, customer: 'Bob Johnson', items: 'Dark Roast x3', total: '$50.97', status: 'Processing' },
+  { id: 4, customer: 'Alice Brown', items: 'Espresso Blend x1', total: '$45.99', status: 'Completed' },
 ]
 
 const recentReservations = [
@@ -26,6 +29,24 @@ const recentReservations = [
 ]
 
 export default function AdminDashboard() {
+  const { isAuthenticated, logout } = useAdminAuth()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push('/admin/login')
+    }
+  }, [isAuthenticated, router])
+
+  const handleLogout = () => {
+    logout()
+    router.push('/admin/login')
+  }
+
+  if (!isAuthenticated) {
+    return null
+  }
+
   return (
     <div className="min-h-screen bg-luxury-black">
       {/* Header */}
@@ -37,11 +58,7 @@ export default function AdminDashboard() {
               <h1 className="text-2xl font-bold text-gradient">LUX Coffee Admin</h1>
             </div>
             <div className="flex items-center space-x-4">
-              <Button variant="outline" size="sm">
-                <Settings className="h-4 w-4 mr-2" />
-                Settings
-              </Button>
-              <Button variant="luxury" size="sm">
+              <Button variant="outline" size="sm" onClick={handleLogout}>
                 <LogOut className="h-4 w-4 mr-2" />
                 Logout
               </Button>
@@ -65,18 +82,6 @@ export default function AdminDashboard() {
             <Link href="/admin/reservations" className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gold-500/10 hover:text-gold-400 transition-colors">
               <Calendar className="h-5 w-5" />
               <span>Reservations</span>
-            </Link>
-            <Link href="/admin/users" className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gold-500/10 hover:text-gold-400 transition-colors">
-              <Users className="h-5 w-5" />
-              <span>Users</span>
-            </Link>
-            <Link href="/admin/messages" className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gold-500/10 hover:text-gold-400 transition-colors">
-              <MessageSquare className="h-5 w-5" />
-              <span>Messages</span>
-            </Link>
-            <Link href="/admin/analytics" className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gold-500/10 hover:text-gold-400 transition-colors">
-              <TrendingUp className="h-5 w-5" />
-              <span>Analytics</span>
             </Link>
           </nav>
         </aside>

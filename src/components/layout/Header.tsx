@@ -3,7 +3,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Coffee, ShoppingCart, User, Search, Moon, Sun } from 'lucide-react'
+import { Menu, X, Coffee, ShoppingCart } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useCart } from '@/contexts/CartContext'
@@ -21,7 +21,6 @@ const navigation = [
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
   const [scrolled, setScrolled] = React.useState(false)
-  const [darkMode, setDarkMode] = React.useState(true)
   const pathname = usePathname()
   const { getTotalItems } = useCart()
   const cartItemsCount = getTotalItems()
@@ -69,9 +68,6 @@ export function Header() {
 
           {/* Right Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" size="icon">
-              <Search className="h-5 w-5 text-gold-400" />
-            </Button>
             <Button variant="ghost" size="icon" className="relative" asChild>
               <Link href="/cart">
                 <ShoppingCart className="h-5 w-5 text-gold-400" />
@@ -81,16 +77,6 @@ export function Header() {
                   </span>
                 )}
               </Link>
-            </Button>
-            <Button variant="ghost" size="icon">
-              <User className="h-5 w-5 text-gold-400" />
-            </Button>
-            <Button
-              variant="luxury"
-              size="sm"
-              onClick={() => setDarkMode(!darkMode)}
-            >
-              {darkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
             <Button variant="luxury" size="sm" asChild>
               <Link href="/reservations">Reserve Table</Link>

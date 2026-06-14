@@ -25,28 +25,6 @@
     --ring: 45 93% 47%;
     --radius: 0.5rem;
   }
-
-  .dark {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 4%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 4%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 45 93% 47%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 64.9%;
-    --accent: 0 0% 15%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 45 93% 47%;
-  }
 }
 
 @layer base {
@@ -63,11 +41,7 @@
   .glass {
     @apply bg-white/10 backdrop-blur-lg border border-white/20;
   }
-  
-  .glass-dark {
-    @apply bg-black/30 backdrop-blur-lg border border-white/10;
-  }
-  
+
   .text-gradient {
     @apply bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 bg-clip-text text-transparent;
   }

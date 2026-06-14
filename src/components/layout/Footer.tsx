@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { Coffee, Instagram, Facebook, Twitter, Mail, Phone, MapPin, Clock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 
 const footerLinks = {
   company: [
@@ -31,30 +30,6 @@ const footerLinks = {
 export function Footer() {
   return (
     <footer className="bg-luxury-black border-t border-gold-500/20">
-      {/* Newsletter Section */}
-      <div className="bg-gradient-gold py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-luxury-black mb-4">
-              Subscribe to Our Newsletter
-            </h2>
-            <p className="text-luxury-black/80 mb-8 max-w-2xl mx-auto">
-              Get exclusive offers, new product announcements, and coffee tips delivered to your inbox.
-            </p>
-            <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 bg-white/90 border-gold-500/30 text-luxury-black placeholder:text-luxury-black/50"
-                required
-              />
-              <Button type="submit" variant="default" className="bg-luxury-black text-gold-400 hover:bg-luxury-charcoal">
-                Subscribe
-              </Button>
-            </form>
-          </div>
-        </div>
-      </div>
 
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
