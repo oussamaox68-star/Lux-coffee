@@ -31,30 +31,35 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(public)/page.js"
     ],
-    "/(public)/menu/page": [
+    "/admin/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(public)/menu/page.js"
+      "static/chunks/app/admin/layout.js"
     ],
-    "/(public)/products/page": [
+    "/admin/login/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(public)/products/page.js"
+      "static/chunks/app/admin/login/page.js"
     ],
-    "/(public)/about/page": [
+    "/admin/dashboard/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(public)/about/page.js"
+      "static/chunks/app/admin/dashboard/page.js"
     ],
-    "/(public)/gallery/page": [
+    "/admin/products/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(public)/gallery/page.js"
+      "static/chunks/app/admin/products/page.js"
     ],
-    "/(public)/blog/page": [
+    "/admin/reservations/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(public)/blog/page.js"
+      "static/chunks/app/admin/reservations/page.js"
+    ],
+    "/_not-found/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }

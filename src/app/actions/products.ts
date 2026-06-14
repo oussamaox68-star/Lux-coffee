@@ -1,7 +1,6 @@
 'use server'
-
-import { revalidatePath } from 'next/cache'
 import { createClient } from '@/lib/supabase/server'
+import { revalidatePath } from 'next/cache'
 
 export interface Product {
   id: string
@@ -83,26 +82,33 @@ export async function createProduct(product: Omit<Product, 'id' | 'created_at'>)
   return data
 }
 
-export async function updateProduct(id: string, product: Partial<Omit<Product, 'id' | 'created_at'>>): Promise<Product | null> {
+export async function updateProduct(id: number, formData: FormData) {
+  console.log('=== UPDATE PRODUCT CALLED ===')
+  console.log('Product ID:', id)
+  
   const supabase = await createClient()
-  const { data, error } = await supabase
+  
+  const name = formData.get('name') as string
+  const price = parseFloat(formData.get('price') as string)
+  const description = formData.get('description') as string
+  const category = formData.get('category') as string
+  
+  console.log('Product data:', { name, price, description, category })
+  
+  const { error } = await supabase
     .from('products')
-    .update(product)
+    .update({ name, price, description, category })
     .eq('id', id)
-    .select()
-    .single()
-
+  
   if (error) {
-    console.error('Error updating product:', error)
-    return null
+    console.error('Update error:', error)
+    return { error: error.message }
   }
-
+  
+  console.log('Update successful')
   revalidatePath('/admin/products')
   revalidatePath('/products')
-  revalidatePath('/menu')
-  revalidatePath(`/products/${id}`)
-
-  return data
+  return { success: true }
 }
 
 export async function deleteProduct(id: string): Promise<boolean> {

@@ -252,27 +252,38 @@ function ProductModal({
     setLoading(true)
 
     try {
-      const productData = {
-        name: formData.name,
-        description: formData.description || null,
-        price: formData.price,
-        image: formData.image || null,
-        category: formData.category || null,
-      }
-
       let success = false
       if (product) {
-        // Update existing product
-        const updated = await updateProduct(product.id, productData)
-        success = !!updated
+        // Update existing product using FormData
+        const formDataObj = new FormData()
+        formDataObj.append('name', formData.name)
+        formDataObj.append('price', formData.price.toString())
+        formDataObj.append('description', formData.description || '')
+        formDataObj.append('category', formData.category || '')
+        
+        const result = await updateProduct(parseInt(product.id), formDataObj)
+        success = result.success
         if (success) {
           toast({
             title: 'Success',
             description: 'Product updated successfully',
           })
+        } else if (result.error) {
+          toast({
+            title: 'Error',
+            description: result.error,
+            variant: 'destructive',
+          })
         }
       } else {
         // Add new product
+        const productData = {
+          name: formData.name,
+          description: formData.description || null,
+          price: formData.price,
+          image: formData.image || null,
+          category: formData.category || null,
+        }
         const created = await createProduct(productData)
         success = !!created
         if (success) {

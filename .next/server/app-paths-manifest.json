@@ -1,8 +1,5 @@
 {
-  "/(public)/page": "app/(public)/page.js",
-  "/(public)/products/page": "app/(public)/products/page.js",
-  "/(public)/blog/page": "app/(public)/blog/page.js",
-  "/(public)/about/page": "app/(public)/about/page.js",
-  "/(public)/gallery/page": "app/(public)/gallery/page.js",
-  "/(public)/menu/page": "app/(public)/menu/page.js"
+  "/admin/login/page": "app/admin/login/page.js",
+  "/admin/products/page": "app/admin/products/page.js",
+  "/admin/dashboard/page": "app/admin/dashboard/page.js"
 }
