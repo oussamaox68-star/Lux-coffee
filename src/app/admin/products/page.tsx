@@ -262,7 +262,7 @@ function ProductModal({
         formDataObj.append('category', formData.category || '')
         
         const result = await updateProduct(parseInt(product.id), formDataObj)
-        success = result.success
+        success = result.success ?? false
         if (success) {
           toast({
             title: 'Success',
