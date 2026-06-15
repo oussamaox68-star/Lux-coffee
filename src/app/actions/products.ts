@@ -85,6 +85,10 @@ export async function createProduct(product: Omit<Product, 'id' | 'created_at'>)
 export async function updateProduct(id: number, formData: FormData) {
   console.log('=== UPDATE PRODUCT CALLED ===')
   console.log('Product ID:', id)
+  console.log('FormData entries:')
+  for (const [key, value] of formData.entries()) {
+    console.log(`${key}: ${value}`)
+  }
   
   const supabase = await createClient()
   
@@ -93,19 +97,23 @@ export async function updateProduct(id: number, formData: FormData) {
   const description = formData.get('description') as string
   const category = formData.get('category') as string
   
-  console.log('Product data:', { name, price, description, category })
+  console.log('Parsed data:', { id, name, price, description, category })
   
-  const { error } = await supabase
+  const { data, error } = await supabase
     .from('products')
     .update({ name, price, description, category })
     .eq('id', id)
+    .select()
+  
+  console.log('Supabase response:', { data, error })
   
   if (error) {
     console.error('Update error:', error)
     return { error: error.message }
   }
   
-  console.log('Update successful')
+  console.log('Update successful! New data:', data)
+  
   revalidatePath('/admin/products')
   revalidatePath('/products')
   return { success: true }
