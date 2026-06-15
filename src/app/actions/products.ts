@@ -83,39 +83,46 @@ export async function createProduct(product: Omit<Product, 'id' | 'created_at'>)
 }
 
 export async function updateProduct(id: number, formData: FormData) {
-  console.log('=== UPDATE PRODUCT CALLED ===')
-  console.log('Product ID:', id)
-  console.log('FormData entries:')
-  for (const [key, value] of formData.entries()) {
-    console.log(`${key}: ${value}`)
-  }
+  'use server'
+  
+  console.log('🔧 UPDATE PRODUCT STARTED, ID:', id)
   
   const supabase = await createClient()
   
+  // Extract data from FormData
   const name = formData.get('name') as string
-  const price = parseFloat(formData.get('price') as string)
+  const price = formData.get('price') as string
   const description = formData.get('description') as string
   const category = formData.get('category') as string
   
-  console.log('Parsed data:', { id, name, price, description, category })
+  console.log('📝 Data to update:', { name, price, description, category })
   
-  const { data, error } = await supabase
+  // Convert price to number
+  const priceNumber = parseFloat(price)
+  
+  // Direct update without select
+  const { error } = await supabase
     .from('products')
-    .update({ name, price, description, category })
+    .update({
+      name: name,
+      price: priceNumber,
+      description: description,
+      category: category
+    })
     .eq('id', id)
-    .select()
-  
-  console.log('Supabase response:', { data, error })
   
   if (error) {
-    console.error('Update error:', error)
-    return { error: error.message }
+    console.error('❌ Update error:', error)
+    return { success: false, error: error.message }
   }
   
-  console.log('Update successful! New data:', data)
+  console.log('✅ Update successful for product ID:', id)
   
+  // Revalidate all relevant paths
   revalidatePath('/admin/products')
   revalidatePath('/products')
+  revalidatePath('/')
+  
   return { success: true }
 }
 
